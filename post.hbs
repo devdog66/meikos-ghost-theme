@@ -1,0 +1,75 @@
+{{!< default}}
+{{#post}}
+    <div class="w3-container w3-row">
+        <div class="w3-quarter">
+            <aside>
+                {{#if @custom.show_author}}
+                    {{#foreach authors}}
+                        {{#if profile_image}}
+                            <div class="postAuthor">
+                                <img src="{{img_url profile_image}}" alt="{{name}}">
+                            </div>
+                        {{else}}
+                            <span class="postAuthor">{{> "icons/avatar"}}</span>
+                        {{/if}}
+                        <div class="postAuthorName">
+                            {{name}}
+                        </div>
+                    {{/foreach}}
+                {{/if}}
+                <div class="postInfo">
+                    <time datetime="{{date format=" YYYY-MM-DD"}}">
+                        {{date updated_at}}
+                    </time> &nbsp; &middot; &nbsp; {{reading_time}}
+                </div>
+            </aside>
+        </div>
+        <div class="w3-half">
+            <article>
+                <h1>{{title}}</h1>
+                {{#match @page.show_title_and_feature_image}}
+                    {{#if feature_image}}
+                        <figure class="postImg w3-mobile">
+                            <img src="{{img_url feature_image}}" alt="{{title}}" class="w3-mobile" loading="lazy">
+                        </figure>
+                    {{/if}}
+                {{/match}}
+                {{content}}
+            </article>
+            <hr />
+            {{#is "post"}}
+                <div class="w3-row postNav">
+                    {{#prev_post}}
+                        <div class="w3-third w3-left-align">
+                            <a href="{{url}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="19" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                                <span>{{slug}}</span>
+                            </a>
+                        </div>
+                    {{/prev_post}}
+                    <div class="w3-third w3-center">
+                        <a href="/blog">All Posts</a>
+                    </div>
+                    {{#next_post}}
+                        <div class="w3-third w3-right-align">
+                            <a href="{{url}}">
+                                <span>{{slug}}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="19" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    {{/next_post}}
+                </div>
+            {{/is}}
+        </div>
+    </div>
+{{/post}}

@@ -1,0 +1,59 @@
+{
+  "name": "ghost-theme-base",
+  "version": "1.0.1",
+  "description": "Ghost Theme project",
+  "keywords": [
+    "meikos",
+    "template",
+    "ghost",
+    "theme",
+    "ghost-theme"
+  ],
+  "author": {
+    "name": "Meikos",
+    "email": "nobody@domain.tld"
+  },
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "gscan .",
+    "build": "npm run test && gulp build",
+    "zip": "gulp zip",
+    "deploy": "shx cp -r assets ../static-app/public"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.19",
+    "cssnano": "7.0.1",
+    "gscan": "4.43.1",
+    "gulp": "5.0.0",
+    "gulp-postcss": "10.0.0",
+    "gulp-zip": "5.1.0",
+    "postcss": "8.4.38",
+    "postcss-easy-import": "4.0.0",
+    "pump": "3.0.0",
+    "shx": "^0.3.4"
+  },
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "config": {
+    "posts_per_page": 5,
+    "card_assets": true,
+    "custom": {
+      "featured_title": {
+        "type": "text",
+        "default": "Featured articles",
+        "group": "homepage"
+      },
+      "show_featured_posts": {
+        "type": "boolean",
+        "default": true,
+        "group": "homepage"
+      },
+      "show_author": {
+        "type": "boolean",
+        "default": true,
+        "group": "post"
+      }
+    }
+  }
+}

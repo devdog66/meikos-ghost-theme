@@ -1,0 +1,42 @@
+<div>
+    <div id="postList" class="postList siteMainMiddle w3-padding-24">
+        <div class="postContainer">
+
+            {{#get "posts" as |featured|}}
+            {{#if featured}}
+                {{#if @custom.featured_title}}
+                    <h2>{{@custom.featured_title}}</h2>
+                {{/if}}
+                    <hr />
+
+                {{#foreach featured}}
+                    <article class="w3-padding-24">
+                        <a class="postLink" href="{{url}}">
+                            <div class="w3-row">
+                                <div class="w3-half">
+                                    {{#if feature_image}}
+                                    <img class="postListImage u-placeholder rectangle" src="{{img_url feature_image}}" alt="{{title}}"
+                                        loading="lazy">
+                                    {{else}}
+                                    <div class="postListImage rectangle" alt="Post image missing" loading="lazy"></div>
+                                    {{/if}}
+                                </div>
+                                <div class="w3-half">
+                                    <div class="postHeader">{{title}}</div>
+                                    <div class="postDescription">{{excerpt}}</div>
+                                    <div class="postDate">
+                                        <time datetime="{{date format="YYYY-MM-DD"}}">
+                                                {{date updated_at}}
+                                        </time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                {{/foreach}}
+            {{/if}}
+            {{/get}}
+            <hr />
+        </div>
+    </div>
+</div>
